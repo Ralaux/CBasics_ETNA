@@ -1,0 +1,14 @@
+Getline : OK
+parse les line, avoir key et value en char* : OK
+rentrer dans add / search / del en fonction des valeurs de value : OK
+foncttion add : NOK
+fonction del : NOK
+fonction search : NOK
+
+TESTER :
+34 6
+34 7
+
+        while ( (command[i] > 47 && command[i] < 58) || \
+                (command[i] > 64 && command[i] < 91) || \
+                (command[i] > 96 && command[i] < 123) ) {
