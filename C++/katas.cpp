@@ -1,5 +1,7 @@
 #include <string>
 #include <iostream>
+#include <vector>
+#include <bits/stdc++.h>
 using std::cout;
 
 // Transform a string with letters and '-' or '_' in CamelCase
@@ -67,3 +69,68 @@ class RGBToHex
     return rtnValue;
   }
 };
+
+//Retrun the trailing zeros of the factorial of the number given in input
+long zeros(long n) {
+  int zeros = 0;
+  n = n/5;
+  zeros = n;
+  while (n >= 5) {
+    n = n/5;
+    zeros += n;
+  }
+  return zeros;
+}
+
+// Requires a string in input. Retiurns a string of the same size.
+// For a given index, if the char has dupplicates in the string, replaces it by ')'
+// Else, replaces it by '('
+// For letters, not case-sensitive
+std::string duplicate_encoder(const std::string& word){
+  char c;
+  bool dup = false;
+  std::string rtnStr;
+  for (unsigned long i = 0; i < word.length(); i++) {
+    
+    for (unsigned long j = 0; j < word.length(); j++) {
+      if (i != j && tolower(word[i]) == tolower(word[j])){
+        dup = true;
+      }
+    }
+    if (dup == false) {
+      rtnStr.append("(");
+    }
+    else if (dup == true) {
+      rtnStr.append(")");
+    }
+    dup = false;
+  }
+  return rtnStr;
+}
+
+// Take as input a vector of int and an int. Each element of the vector represents a client in a supermarket, its value
+// is its time at the till. The int is the number of till.
+// The program returns the time needed for all clients to be gone.
+// Whenever a till is empty, the first client of the list takes it.
+long queueTime(std::vector<int> customers,int n){
+  long time;
+  int free_till = n;
+  std::vector<int> tills = {};
+  int min;
+  int index_min;
+  int cpt2;
+  for (int cpt = 0; cpt < n; cpt++) {
+    tills.push_back(0);
+  }
+  for(int i : customers) {
+    min = *std::min_element(tills.begin(), tills.end());
+    for (cpt2 = 0; cpt2 < tills.size(); cpt2++) {
+      if (tills[cpt2] == min) {
+        index_min = cpt2;
+      }
+    }
+    tills[index_min] += i;
+  }
+  time = *std::max_element(tills.begin(), tills.end());
+  return time;
+}
