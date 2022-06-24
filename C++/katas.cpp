@@ -134,3 +134,30 @@ long queueTime(std::vector<int> customers,int n){
   time = *std::max_element(tills.begin(), tills.end());
   return time;
 }
+
+//Takes a string as input, containing only letters or spaces.
+// Has no impact of words of 4 letters or less, but reverses words of 5 letters or more.
+// Returns a string.
+std::string spinWords(const std::string &str)
+{
+  int cpt5 = 0;
+  int rev = 0;
+  std::string reversed; 
+
+  for (int i = 0; i < str.size(); i++) {
+    reversed.push_back(str[i]);
+    if (iswalnum(str[i+1]) == 0 && cpt5 >= 4) {
+      for (rev = 0; rev <= cpt5; rev++) {
+        reversed[i-rev] = str[rev+i-cpt5];
+      }
+      cpt5 = 0;
+    }
+    else if (str[i] == ' ') {
+      cpt5 = 0;
+    }
+    else {
+      cpt5++;
+    }
+  }
+  return reversed;
+}
