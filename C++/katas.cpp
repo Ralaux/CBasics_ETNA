@@ -135,6 +135,7 @@ long queueTime(std::vector<int> customers,int n){
   return time;
 }
 
+
 //Takes a string as input, containing only letters or spaces.
 // Has no impact of words of 4 letters or less, but reverses words of 5 letters or more.
 // Returns a string.
