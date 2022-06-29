@@ -162,3 +162,39 @@ std::string spinWords(const std::string &str)
   }
   return reversed;
 }
+
+// Given two numbers a and b as strings (may be very large ones), returns
+// the last digit of the number a^b. 
+int last_digit(const std::string &str1, const std::string &str2) {
+  if (str2 == "0") {
+    return 1;
+  }
+  if (str2 == "1") {
+    int rtnValue = str1[str1.size()-1] - '0';
+    return rtnValue;
+  }
+  int aLast = str1[str1.size()-1] - '0';
+  int bLast2;
+  if (str2.size() > 1) {
+    bLast2 = (str2[str2.size()-2] - '0')*10 + (str2[str2.size()-1] - '0');
+  }
+  else {
+    bLast2 = str1[str2.size()-1] - '0';
+  }
+  int exp = bLast2%4;
+  if (exp == 0) {
+    exp = 4;
+  }
+  int lastDig = aLast;
+  for (int i = 0; i < exp-1; i++) {
+    lastDig *= aLast; 
+  }
+  lastDig = lastDig % 10;
+  std::cout << aLast;
+  std::cout << '\n';
+  std::cout << bLast2;
+  std::cout << '\n';
+  std::cout << exp;
+  std::cout << '\n';
+  return lastDig;
+}
