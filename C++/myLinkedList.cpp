@@ -41,7 +41,7 @@ void myPopFirst(struct Node* head) {
         head->next = head->next->next;
     }
     else {
-        std::cout << "Empty List";
+        std::cout << "Empty List" << '\n';
     }
 }
 
@@ -54,20 +54,20 @@ void myPopLast(struct Node* head) {
         head -> next = NULL;
     }
     else {
-        std::cout << "Empty List";
+        std::cout << "Empty List" << '\n';
     }
 }
 
 // Delete a given element of a linked list
 void myDelete(struct Node* head, struct Node* nodeDel) {
-    while (head -> next != NULL /*head -> next != nodeDel*/) {
-        head -> next;
+    while (head -> next != NULL && head -> next != nodeDel) {
+        head = head -> next;
     }
     if (head -> next == nodeDel) {
         head -> next = nodeDel -> next;
     }
     else {
-        std::cout << "Node not found";
+        std::cout << "Node not found" << '\n';
     }
 }
 
@@ -87,8 +87,7 @@ struct Node* myPopElement(struct Node* head, int DataPop) {
 void myListEnumerate (struct Node* node) {
     node = node -> next;
     while (node != NULL) {
-        std::cout << node->data;
-        std::cout << '\n';
+        std::cout << node->data << '\n';
         node = node->next;
     }
 }

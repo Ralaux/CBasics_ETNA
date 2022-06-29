@@ -1,4 +1,4 @@
-#include "linkedList.h"
+#include "myLinkedList.h"
 #include <iostream>
 #include <list> 
 #include <string>
@@ -37,12 +37,15 @@ int main ()
   myListEnumerate(head);
   */
   
-  myDelete(head,second);
-  std::cout << '1' << '\n';
+  /*
+  Deletion Tests
   myPopFirst(head);
   std::cout << '1' << '\n';
   myPopLast(head);
   std::cout << '1' << '\n';
+  myDelete(head,third);
+  std::cout << '1' << '\n';
   myDelete(head, fourth);
   myListEnumerate(head);
+  */
 }
